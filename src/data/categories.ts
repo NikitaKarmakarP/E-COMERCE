@@ -262,3 +262,18 @@ export const categories: Category[] = [
         ],
     },
 ];
+export const getCategoryBySlug = (slug: string) => {
+    const mainCategory = categories.find((c) => c.slug === slug);
+    if (mainCategory) {
+        return { category: mainCategory, subcategory: null, isMain: true };
+    }
+
+    for (const cat of categories) {
+        const sub = cat.subcategories.find((s) => s.slug === slug);
+        if (sub) {
+            return { category: cat, subcategory: sub, isMain: false };
+        }
+    }
+
+    return null;
+};

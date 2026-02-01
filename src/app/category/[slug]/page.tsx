@@ -1,27 +1,50 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import ProductCard from '@/components/Product/ProductCard';
-import { categories } from '@/data/categories';
+import { getCategoryBySlug } from '@/data/categories';
 import { products } from '@/data/products';
 import styles from '../category.module.css';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
 
 interface PageProps {
     params: Promise<{ slug: string }>;
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+const CATEGORY_BANNERS: Record<string, string> = {
+    'grocery': '/images/grocery_banner.png',
+    'fruits-vegetables': '/images/grocery_banner.png',
+    'electronics': '/images/electronics_banner.png',
+    'mobiles': '/images/electronics_banner.png',
+    'beauty-health': '/images/beauty_banner.png',
+    'skincare': '/images/beauty_banner.png',
+    'toys-kids': '/images/toys_banner.png',
+    'tools-essentials': '/images/tools_banner.png',
+    'power-tools': '/images/tools_banner.png',
+    // Fallbacks
+    'default': '/images/hero_banner.png'
+};
+
 export default async function CategoryPage({ params, searchParams }: PageProps) {
     const { slug } = await params;
-    const category = categories.find((c) => c.slug === slug);
+    const result = getCategoryBySlug(slug);
 
-    if (!category) {
+    if (!result) {
         notFound();
     }
 
-    // Filter products by category
-    const categoryProducts = products.filter((p) => p.category === category.id);
+    const { category, subcategory, isMain } = result;
+    const bannerImage = CATEGORY_BANNERS[slug] || CATEGORY_BANNERS[category.id] || CATEGORY_BANNERS['default'];
+
+    // Filter products
+    const categoryProducts = products.filter((p) => {
+        if (isMain) {
+            return p.category === category.id;
+        } else {
+            return p.category === category.id && (p.subcategory === subcategory!.id || p.subcategory === slug); // Handle exact or rough match
+        }
+    });
 
     return (
         <>
@@ -29,41 +52,47 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
 
             <main className={styles.categoryPage}>
                 {/* Category Hero */}
-                <header className={styles.categoryHeader}>
+                <header className={styles.categoryHeader} style={{
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${bannerImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    color: 'white'
+                }}>
                     <div className="container">
                         <div className={styles.headerContent}>
-                            <div className={styles.iconBox} style={{ backgroundColor: category.color }}>
+                            <div className={styles.iconBox} style={{ backgroundColor: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(5px)' }}>
                                 {category.icon}
                             </div>
                             <div className={styles.headerText}>
-                                <h1>{category.name}</h1>
-                                <p>{category.description}</p>
+                                <h1 style={{ color: 'white' }}>{isMain ? category.name : subcategory!.name}</h1>
+                                <p style={{ color: 'rgba(255,255,255,0.9)' }}>{category.description}</p>
                             </div>
                         </div>
                     </div>
                 </header>
 
                 <div className="container">
-                    {/* Subcategory Navigation */}
-                    <nav className={styles.subcategoryNav}>
-                        <div className={styles.subcategoryList}>
-                            <button className={`${styles.subcategoryItem} ${styles.subcategoryItemActive}`}>
-                                All {category.name}
-                            </button>
-                            {category.subcategories.map((sub) => (
-                                <button key={sub.id} className={styles.subcategoryItem}>
-                                    {sub.name}
-                                </button>
-                            ))}
-                        </div>
-                    </nav>
+                    {/* Subcategory Navigation (Only show if Main) */}
+                    {isMain && (
+                        <nav className={styles.subcategoryNav}>
+                            <div className={styles.subcategoryList}>
+                                <Link href={`/category/${category.slug}`} className={`${styles.subcategoryItem} ${styles.subcategoryItemActive}`}>
+                                    All {category.name}
+                                </Link>
+                                {category.subcategories.map((sub) => (
+                                    <Link key={sub.id} href={`/category/${sub.slug}`} className={styles.subcategoryItem}>
+                                        {sub.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </nav>
+                    )}
 
                     <div className={styles.mainLayout}>
                         {/* Sidebar Filters */}
                         <aside className={styles.sidebar}>
                             <div className={styles.filterCard}>
                                 <h3 style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>Filters</h3>
-
                                 {category.filters.map((filter) => (
                                     <div key={filter.id} className={styles.filterSection}>
                                         <span className={styles.filterTitle}>{filter.name}</span>
@@ -88,7 +117,6 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
                                         )}
                                     </div>
                                 ))}
-
                                 <button className="primary-btn" style={{ width: '100%', marginTop: '1rem' }}>
                                     Apply Filters
                                 </button>
@@ -120,7 +148,9 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
                                     ))
                                 ) : (
                                     <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '4rem 0' }}>
-                                        <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>No products found in this category.</p>
+                                        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔍</div>
+                                        <h3>No products found under {isMain ? category.name : subcategory!.name}</h3>
+                                        <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>We are stocking up this aisle! Check back later.</p>
                                     </div>
                                 )}
                             </div>
@@ -128,7 +158,6 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
                     </div>
                 </div>
             </main>
-
             <Footer />
         </>
     );
