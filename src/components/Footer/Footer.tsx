@@ -37,11 +37,11 @@ export default function Footer() {
                     <div className={styles.linkCol}>
                         <h4>Shop By Category</h4>
                         <ul>
-                            <li><Link href="/fashion">Fashion</Link></li>
-                            <li><Link href="/grocery">Grocery</Link></li>
-                            <li><Link href="/electronics">Electronics</Link></li>
-                            <li><Link href="/home">Home & Kitchen</Link></li>
-                            <li><Link href="/beauty">Beauty & Care</Link></li>
+                            <li><Link href="/category/fashion">Fashion</Link></li>
+                            <li><Link href="/category/grocery">Grocery</Link></li>
+                            <li><Link href="/category/electronics">Electronics</Link></li>
+                            <li><Link href="/category/home-living">Home & Kitchen</Link></li>
+                            <li><Link href="/category/beauty-health">Beauty & Care</Link></li>
                         </ul>
                     </div>
 
@@ -49,17 +49,17 @@ export default function Footer() {
                         <h4>Customer Support</h4>
                         <ul>
                             <li><Link href="/track">Track Order</Link></li>
-                            <li><Link href="/returns">Returns & Refunds</Link></li>
-                            <li><Link href="/shipping">Shipping Policy</Link></li>
-                            <li><Link href="/contact">Contact Us</Link></li>
-                            <li><Link href="/help">Help Center</Link></li>
+                            <li><Link href="/support">Returns & Refunds</Link></li>
+                            <li><Link href="/support">Shipping Policy</Link></li>
+                            <li><Link href="/support">Contact Us</Link></li>
+                            <li><Link href="/support">Help Center</Link></li>
                         </ul>
                     </div>
 
                     <div className={styles.linkCol}>
                         <h4>About BharatBazaar</h4>
                         <ul>
-                            <li><Link href="/our-story">Our Story</Link></li>
+                            <li><Link href="/about">Our Story</Link></li>
                             <li><Link href="/careers">Careers</Link></li>
                             <li><Link href="/press">Press Releases</Link></li>
                             <li><Link href="/ethics">Business Ethics</Link></li>

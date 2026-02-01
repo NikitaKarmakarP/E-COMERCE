@@ -1,0 +1,84 @@
+.pageContainer {
+    background: #fcfcfc;
+    min-height: 100vh;
+    font-family: 'Merriweather', 'Inter', serif;
+}
+
+.hero {
+    background: #064e3b;
+    color: #f0fdf4;
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.heroTitle {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #d1fae5;
+}
+
+.contentSection {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+}
+
+.statement {
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1.6;
+    color: #1e293b;
+    margin-bottom: 6rem;
+    font-style: italic;
+}
+
+.pillarGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.pillar {
+    padding: 2rem;
+    border-top: 2px solid #064e3b;
+}
+
+.pillarTitle {
+    font-size: 1.5rem;
+    color: #064e3b;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.pillarText {
+    color: #475569;
+    line-height: 1.8;
+}
+
+.commitmentBox {
+    background: #ecfdf5;
+    padding: 4rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+@media (max-width: 768px) {
+    .pillarGrid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .heroTitle {
+        font-size: 3rem;
+    }
+}

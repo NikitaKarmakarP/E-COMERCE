@@ -1,0 +1,221 @@
+.supportPage {
+    background: var(--bg-main);
+    min-height: 100vh;
+    padding-bottom: 4rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+    padding: 5rem 0 8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #ffffff, #94a3b8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    margin-bottom: 3rem;
+}
+
+.searchBox {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.searchInput {
+    flex: 1;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    outline: none;
+    border-radius: 50px;
+}
+
+.searchBtn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.searchBtn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: -4rem;
+    position: relative;
+    z-index: 3;
+}
+
+.card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding: 1rem;
+    background: #f1f5f9;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.card:hover .icon {
+    background: var(--bg-hover);
+    transform: scale(1.1);
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.cardDesc {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.faqSection {
+    margin-top: 5rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faqGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.faqItem {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.faqQuestion {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.faqAnswer {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.contactBanner {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 4rem;
+    text-align: center;
+    margin-top: 6rem;
+    background-image: linear-gradient(to right, #eff6ff, #f0fdf4);
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.contactItem h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.contactItem p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.contactLink {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .cardGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .faqGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .contactGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero {
+        padding: 4rem 1rem 6rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,91 @@
+.pageContainer {
+    background: #ffffff;
+    min-height: 100vh;
+    color: #334155;
+    scroll-behavior: smooth;
+    /* This only affects scrolling within this container if it has overflow */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.header {
+    background: #f8fafc;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.lastUpdated {
+    color: #64748b;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+}
+
+.navLink {
+    display: block;
+    padding: 0.8rem 0;
+    color: #64748b;
+    text-decoration: none;
+    border-bottom: 1px solid #f1f5f9;
+    transition: color 0.2s;
+}
+
+.navLink:hover {
+    color: #0f172a;
+    border-bottom-color: #cbd5e1;
+}
+
+.content {
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+}
+
+.sectionHeading {
+    font-size: 1.8rem;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.text {
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
