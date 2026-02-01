@@ -64,6 +64,7 @@ export default function Header() {
                                     <span>{activeMember ? activeMember.name : 'Account'}</span>
                                     <div className={styles.dropdownContent}>
                                         <Link href="/login">Login / Register</Link>
+                                        <Link href="/family">Family Account</Link>
                                         <Link href="/dashboard/seller">Seller Panel</Link>
                                         <Link href="/dashboard/admin">Admin Desk</Link>
                                     </div>

@@ -7,18 +7,7 @@ export const metadata: Metadata = {
   keywords: "ecommerce, bharatbazaar, grocery, fashion, electronics, online shopping india",
 };
 
-import { Outfit, Inter } from "next/font/google";
 import MobileBottomNav from "@/components/Navigation/MobileBottomNav";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 import { AppProvider } from '@/context/AppContext';
 
@@ -33,7 +22,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1a237e" />
       </head>
-      <body className={`${outfit.variable} ${inter.variable}`}>
+      <body>
         <AppProvider>
           <a href="#main-content" className="skip-link">Skip to main content</a>
           {children}

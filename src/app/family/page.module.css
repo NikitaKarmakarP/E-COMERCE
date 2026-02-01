@@ -1,0 +1,110 @@
+.main {
+    min-height: 100vh;
+    padding: 2rem 0;
+    background: var(--bg-main);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.memberCard {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-light);
+}
+
+.avatar {
+    font-size: 2.5rem;
+    background: var(--bg-main);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.info {
+    flex: 1;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+}
+
+.role {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: capitalize;
+}
+
+.limits {
+    width: 150px;
+}
+
+.limitLabel {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.limitInput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+}
+
+.progress {
+    height: 6px;
+    background: var(--bg-main);
+    border-radius: var(--radius-full);
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background: var(--success);
+    border-radius: var(--radius-full);
+}
+
+.warning {
+    background: var(--warning);
+}
+
+.danger {
+    background: var(--error);
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

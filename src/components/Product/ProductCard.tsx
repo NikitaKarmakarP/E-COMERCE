@@ -41,7 +41,11 @@ export default function ProductCard({
             <div className={styles.imageWrapper}>
                 <Link href={`/product/${id}`} className={styles.imageLink}>
                     <div className={styles.imagePlaceholder}>
-                        <span className={styles.imageIcon} aria-hidden="true">{isGrocery ? '🍎' : isFashion ? '👕' : '📦'}</span>
+                        {image ? (
+                            <Image src={image} alt={name} fill style={{ objectFit: 'cover' }} />
+                        ) : (
+                            <span className={styles.imageIcon} aria-hidden="true">{isGrocery ? '🍎' : isFashion ? '👕' : '📦'}</span>
+                        )}
                         {brand && (
                             <div className={styles.verifiedBadge} title="Verified Seller">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--primary)" ><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z"></path><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l6.59-6.58L18 7.5l-8 8z" fill="white"></path></svg>

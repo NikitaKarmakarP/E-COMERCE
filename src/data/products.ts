@@ -11,6 +11,7 @@ export interface Product {
     isGrocery?: boolean;
     brand?: string;
     featured?: boolean;
+    description?: string;
 }
 
 export const products: Product[] = [
@@ -29,29 +30,29 @@ export const products: Product[] = [
     },
     {
         id: '2',
-        name: 'Smart Noise Cancelling Headphones',
-        price: 4999,
-        originalPrice: 9999,
+        name: 'Smart Fitness Watch Series 5',
+        price: 3999,
+        originalPrice: 8999,
         category: 'electronics',
-        subcategory: 'audio',
+        subcategory: 'wearables',
         rating: 4.8,
-        discount: '50%',
-        brand: 'Sony',
-        image: '',
+        discount: '55%',
+        brand: 'Boat',
+        image: '/images/smart_watch.png',
         featured: true,
     },
     {
         id: '3',
-        name: 'Organic Fresh Alphonso Mangoes',
-        price: 599,
-        originalPrice: 799,
+        name: 'Organic Fresh Alphonso Mangoes (1 Dozen)',
+        price: 899,
+        originalPrice: 1299,
         category: 'grocery',
         subcategory: 'fruits-vegetables',
         rating: 4.9,
-        discount: '25%',
+        discount: '30%',
         isGrocery: true,
-        brand: 'Organic India',
-        image: '',
+        brand: 'Ratnagiri Estates',
+        image: '/images/mangoes.png',
         featured: true,
     },
     {
@@ -122,15 +123,15 @@ export const products: Product[] = [
     },
     {
         id: '9',
-        name: 'Mens Slim Fit Jeans',
-        price: 1499,
-        originalPrice: 2499,
+        name: 'Modern Sport Running Sneakers',
+        price: 2499,
+        originalPrice: 4999,
         category: 'fashion',
-        subcategory: 'men',
-        rating: 4.3,
-        discount: '40%',
-        brand: 'Levis',
-        image: '',
+        subcategory: 'footwear',
+        rating: 4.6,
+        discount: '50%',
+        brand: 'Puma',
+        image: '/images/sneakers.png',
     },
     {
         id: '10',

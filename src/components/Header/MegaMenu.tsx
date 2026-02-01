@@ -58,6 +58,7 @@ export default function MegaMenu({ categories, isOpen, onClose }: MegaMenuProps)
                         <h3>Programs & Features</h3>
                         <ul>
                             <li><Link href="/programs" onClick={onClose}>All Programs</Link></li>
+                            <li><Link href="/family" onClick={onClose}>Family Account</Link></li>
                             <li><Link href="/bharat-fresh" onClick={onClose}>Bharat Fresh</Link></li>
                             <li><Link href="/deals" onClick={onClose}>Today&apos;s Deals</Link></li>
                             <li><Link href="/gift-cards" onClick={onClose}>Gift Cards</Link></li>

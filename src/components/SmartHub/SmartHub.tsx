@@ -5,7 +5,11 @@ import styles from './SmartHub.module.css';
 import Link from 'next/link';
 
 export default function SmartHub() {
-    const { activeMember, familyMembers, budgetLimit, currentSpend, setActiveMember, addToCart } = useApp();
+    const { activeMember, familyMembers, setActiveMember, addToCart } = useApp();
+
+    // Derive budget info from active member
+    const budgetLimit = activeMember?.spendingLimit || 10000; // Default fallback
+    const currentSpend = activeMember?.spentThisMonth || 0;
 
     const predictions = [
         { id: 1, item: 'Milk (2L)', type: 'restock', daysLeft: 2, icon: '🥛' },
@@ -83,16 +87,16 @@ export default function SmartHub() {
 
                     {/* Budget & Subscriptions */}
                     <div className={`${styles.card} ${styles.budgetCard}`}>
-                        <h3>Monthly Budget</h3>
+                        <h3>{activeMember?.name}&apos;s Budget</h3>
                         <div className={styles.progressContainer}>
                             <div
                                 className={styles.progressBar}
-                                style={{ width: `${(currentSpend / budgetLimit) * 100}%` }}
+                                style={{ width: `${Math.min((currentSpend / budgetLimit) * 100, 100)}%` }}
                             ></div>
                         </div>
                         <div className={styles.budgetMeta}>
-                            <span>₹{currentSpend} spent</span>
-                            <span>Limit: ₹{budgetLimit}</span>
+                            <span>₹{currentSpend.toLocaleString()} spent</span>
+                            <span>Limit: ₹{budgetLimit.toLocaleString()}</span>
                         </div>
                         <div className={styles.subscriptionBox}>
                             <p>📦 <strong>Smart Subscription:</strong> 12 items arriving Sunday</p>

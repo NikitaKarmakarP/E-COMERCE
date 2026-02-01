@@ -9,10 +9,10 @@ import { useApp } from '@/context/AppContext';
 import Link from 'next/link';
 
 export default function CartPage() {
-    const { cartItems, removeFromCart, updateQuantity, addToCart } = useApp();
+    const { cartItems, removeFromCart, updateQuantity, addToCart, wallet } = useApp();
     const [savedItems, setSavedItems] = useState<CartItem[]>([]);
     const [useWallet, setUseWallet] = useState(false);
-    const wallatBalance = 250;
+    const walletBalance = wallet.balance;
 
     // Group items by category for separate delivery slots
     const groups: CartCategoryGroup[] = [
@@ -34,7 +34,7 @@ export default function CartPage() {
         return acc + (original - item.price) * item.quantity;
     }, 0);
     const shipping = cartItems.length > 0 ? (subtotal > 499 ? 0 : 49) : 0;
-    const finalTotal = subtotal + shipping - (useWallet ? Math.min(wallatBalance, subtotal) : 0);
+    const finalTotal = subtotal + shipping - (useWallet ? Math.min(walletBalance, subtotal) : 0);
 
     const saveForLater = (item: CartItem) => {
         removeFromCart(item.id);
@@ -153,7 +153,7 @@ export default function CartPage() {
                                 <div className={styles.walletBox}>
                                     <div className={styles.walletText}>
                                         <h5>Wallet Balance</h5>
-                                        <p>₹{wallatBalance} available</p>
+                                        <p>₹{walletBalance.toLocaleString()} available</p>
                                     </div>
                                     <input
                                         type="checkbox"
@@ -191,7 +191,7 @@ export default function CartPage() {
                                     {useWallet && subtotal > 0 && (
                                         <div className={styles.row}>
                                             <span>Wallet Usage</span>
-                                            <span style={{ color: 'var(--success)' }}>− ₹{Math.min(wallatBalance, subtotal)}</span>
+                                            <span style={{ color: 'var(--success)' }}>− ₹{Math.min(walletBalance, subtotal)}</span>
                                         </div>
                                     )}
 

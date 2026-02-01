@@ -93,7 +93,7 @@
   border-radius: 30px;
   position: relative;
   box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
-  background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1000');
+  background-image: url('/images/hero_banner.png');
   background-size: cover;
   background-position: center;
 }
@@ -247,12 +247,12 @@
 }
 
 .fashionBanner {
-  background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1000');
+  background-image: url('/images/fashion_banner.png');
   background-size: cover;
 }
 
 .groceryBanner {
-  background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1000');
+  background-image: url('/images/grocery_banner.png');
   background-size: cover;
 }
 

@@ -2,24 +2,23 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { CartItem } from '@/types/cart';
-
-interface FamilyMember {
-    id: string;
-    name: string;
-    role: 'head' | 'member' | 'kid' | 'elder';
-    avatar: string;
-}
+import { FamilyMember, FamilyWallet, Transaction } from '@/types/family';
 
 interface AppContextType {
     isElderMode: boolean;
     setIsElderMode: (val: boolean) => void;
     isKidsMode: boolean;
     setIsKidsMode: (val: boolean) => void;
+
     familyMembers: FamilyMember[];
     activeMember: FamilyMember | null;
     setActiveMember: (m: FamilyMember) => void;
-    budgetLimit: number;
-    currentSpend: number;
+    updateMemberLimit: (id: string, limit: number) => void;
+
+    wallet: FamilyWallet;
+    topUpWallet: (amount: number) => void;
+    recordTransaction: (amount: number, description: string) => boolean; // returns success
+
     cartItems: CartItem[];
     wishlistItems: any[];
     addToCart: (product: any) => void;
@@ -35,16 +34,29 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export function AppProvider({ children }: { children: React.ReactNode }) {
     const [isElderMode, setIsElderMode] = useState(false);
     const [isKidsMode, setIsKidsMode] = useState(false);
+
+    // Mock Initial Data
+    const [familyMembers, setFamilyMembers] = useState<FamilyMember[]>([
+        { id: '1', name: 'Nikita', role: 'head', avatar: '👩‍💼', spendingLimit: 50000, spentThisMonth: 12400, canApproveRequests: true },
+        { id: '2', name: 'Rahul', role: 'member', avatar: '👨‍💻', spendingLimit: 20000, spentThisMonth: 5600 },
+        { id: '3', name: 'Dadi', role: 'elder', avatar: '👵', spendingLimit: 10000, spentThisMonth: 850 },
+        { id: '4', name: 'Aavya', role: 'kid', avatar: '👧', spendingLimit: 2000, spentThisMonth: 1200 },
+    ]);
+
     const [activeMember, setActiveMember] = useState<FamilyMember | null>(null);
+
+    const [wallet, setWallet] = useState<FamilyWallet>({
+        balance: 25000,
+        currency: '₹',
+        transactions: [
+            { id: 't1', memberId: '1', memberName: 'Nikita', amount: 4500, description: 'Grocery Haul', date: '2024-02-01', type: 'purchase' },
+            { id: 't2', memberId: '2', memberName: 'Rahul', amount: 8999, description: 'Gaming Headset', date: '2024-01-28', type: 'purchase' },
+            { id: 't3', memberId: '4', memberName: 'Aavya', amount: 499, description: 'Drawing Kit', date: '2024-01-30', type: 'purchase' },
+        ]
+    });
+
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
     const [wishlistItems, setWishlistItems] = useState<any[]>([]);
-
-    const familyMembers: FamilyMember[] = [
-        { id: '1', name: 'Nikita', role: 'head', avatar: '👩‍💼' },
-        { id: '2', name: 'Rahul', role: 'member', avatar: '👨‍💻' },
-        { id: '3', name: 'Dadi', role: 'elder', avatar: '👵' },
-        { id: '4', name: 'Aavya', role: 'kid', avatar: '👧' },
-    ];
 
     useEffect(() => {
         if (!activeMember) setActiveMember(familyMembers[0]);
@@ -62,6 +74,67 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             setIsKidsMode(false);
         }
     }, [activeMember]);
+
+    const updateMemberLimit = (id: string, limit: number) => {
+        setFamilyMembers(prev => prev.map(m => m.id === id ? { ...m, spendingLimit: limit } : m));
+    };
+
+    const topUpWallet = (amount: number) => {
+        setWallet(prev => ({
+            ...prev,
+            balance: prev.balance + amount,
+            transactions: [{
+                id: Date.now().toString(),
+                memberId: activeMember?.id || 'sys',
+                memberName: activeMember?.name || 'System',
+                amount: amount,
+                description: 'Wallet Top-up',
+                date: new Date().toISOString().split('T')[0],
+                type: 'topup'
+            }, ...prev.transactions]
+        }));
+    };
+
+    const recordTransaction = (amount: number, description: string): boolean => {
+        if (!activeMember) return false;
+
+        // Check wallet balance
+        if (wallet.balance < amount) {
+            alert("Insufficient wallet balance!");
+            return false;
+        }
+
+        // Check member limit if applicable
+        if (activeMember.spendingLimit && (activeMember.spentThisMonth + amount > activeMember.spendingLimit)) {
+            alert(`Spending limit exceeded! You have ₹${activeMember.spendingLimit - activeMember.spentThisMonth} left.`);
+            return false;
+        }
+
+        // Process Transaction
+        setWallet(prev => ({
+            ...prev,
+            balance: prev.balance - amount,
+            transactions: [{
+                id: Date.now().toString(),
+                memberId: activeMember.id,
+                memberName: activeMember.name,
+                amount: amount,
+                description,
+                date: new Date().toISOString().split('T')[0],
+                type: 'purchase'
+            }, ...prev.transactions]
+        }));
+
+        // Update Member Spend
+        setFamilyMembers(prev => prev.map(m =>
+            m.id === activeMember.id ? { ...m, spentThisMonth: m.spentThisMonth + amount } : m
+        ));
+
+        // Sync active member state
+        setActiveMember(prev => prev ? { ...prev, spentThisMonth: prev.spentThisMonth + amount } : null);
+
+        return true;
+    };
 
     const addToCart = (product: any) => {
         setCartItems(prev => {
@@ -109,8 +182,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             isKidsMode, setIsKidsMode,
             familyMembers,
             activeMember, setActiveMember,
-            budgetLimit: 15000,
-            currentSpend: 8200,
+            updateMemberLimit,
+            wallet, topUpWallet, recordTransaction,
             cartItems,
             wishlistItems,
             addToCart,

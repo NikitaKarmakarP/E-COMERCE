@@ -12,25 +12,25 @@ export default function MobileBottomNav() {
     return (
         <nav className={styles.nav}>
             <Link href="/" className={styles.navItem}>
-                <div className={styles.icon}>🏠</div>
+                <div className={styles.icon} aria-hidden="true">🏠</div>
                 <span>Home</span>
             </Link>
             <Link href="/categories" className={styles.navItem}>
-                <span className={styles.icon}>📁</span>
+                <span className={styles.icon} aria-hidden="true">📁</span>
                 <span>Categories</span>
             </Link>
             <Link href="/wishlist" className={styles.navItem}>
-                <div className={styles.icon}>❤️</div>
+                <div className={styles.icon} aria-hidden="true">❤️</div>
                 <span>Wishlist</span>
                 {wishlistCount > 0 && <span className={styles.badge}>{wishlistCount}</span>}
             </Link>
             <Link href="/cart" className={styles.navItem}>
-                <div className={styles.icon}>🛒</div>
+                <div className={styles.icon} aria-hidden="true">🛒</div>
                 <span>Cart</span>
                 {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
             </Link>
             <Link href="/account" className={styles.navItem}>
-                <div className={styles.icon}>👤</div>
+                <div className={styles.icon} aria-hidden="true">👤</div>
                 <span>Profile</span>
             </Link>
         </nav>
