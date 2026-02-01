@@ -1,0 +1,115 @@
+.discoveryPage {
+    min-height: 100vh;
+    background: #f8fafc;
+    padding-bottom: 5rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
+    color: white;
+    padding: 6rem 0;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png');
+    opacity: 0.05;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sectionHeader h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.filterBar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.filterBtn {
+    padding: 10px 24px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #64748b;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filterBtnActive {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 10px 15px rgba(26, 35, 126, 0.2);
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero {
+        padding: 4rem 0;
+    }
+}

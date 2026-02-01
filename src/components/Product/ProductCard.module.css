@@ -1,0 +1,268 @@
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+    position: relative;
+    display: block;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.imageLink {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.wishlistBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #94a3b8;
+}
+
+.wishlistBtn:hover {
+    transform: scale(1.1);
+}
+
+.wishlistBtn.wished {
+    color: var(--secondary);
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+}
+
+.discountBadge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--secondary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.verifiedBadge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.fashionOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.card:hover .fashionOverlay {
+    transform: translateY(0);
+}
+
+.content {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-main);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.title {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ratingRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.ratingStars {
+    color: #ff9800;
+    font-size: 0.9rem;
+}
+
+.emptyStars {
+    color: #e2e8f0;
+}
+
+.ratingValue {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.priceRow {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 12px;
+}
+
+.pricing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.originalPrice {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.discountText {
+    color: var(--secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Myntra Style Fashion Card specific */
+.fashionCard .brand {
+    color: #282c3f;
+}
+
+/* BigBasket Style Grocery specific */
+.groceryCard {
+    aspect-ratio: auto;
+}
+
+.groceryCard .imageWrapper {
+    aspect-ratio: 1/1;
+}
+
+.groceryActions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.weightSelect {
+    flex: 1;
+    padding: 6px 10px;
+    background: #f8fafc;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.addBtn {
+    padding: 6px 15px;
+    background: #53b175;
+    /* BigBasket Green */
+    color: white;
+    font-weight: 700;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.buyBtn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: white;
+    font-weight: 700;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-top: auto;
+    transition: all 0.2s;
+}
+
+.buyBtn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Elder Mode Styles */
+.elderCard .title {
+    font-size: 1.2rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.elderCard .price {
+    font-size: 1.5rem;
+}
+
+.elderCard .buyBtn,
+.elderCard .addBtn {
+    padding: 20px;
+    font-size: 1.2rem;
+    border-width: 2px;
+}

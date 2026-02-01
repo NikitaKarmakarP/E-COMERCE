@@ -1,0 +1,43 @@
+.searchPage {
+    padding: 4rem 0;
+    min-height: 80vh;
+    background: #f8fafc;
+}
+
+.searchHeader {
+    margin-bottom: 3rem;
+}
+
+.searchHeader h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.searchHeader p {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.noResults {
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.noResultsIcon {
+    font-size: 5rem;
+    opacity: 0.2;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.noResults h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}

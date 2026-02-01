@@ -1,0 +1,115 @@
+.dashboardLayout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    background: #f1f5f9;
+}
+
+.sidebar {
+    background: #0f172a;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarBrand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebarBrand span {
+    background: var(--primary);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.navLink {
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: #94a3b8;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navLink:hover,
+.activeLink {
+    background: #1e293b;
+    color: white;
+}
+
+.activeLink {
+    background: var(--primary);
+    color: white;
+}
+
+.mainContent {
+    padding: 2.5rem;
+    overflow-y: auto;
+}
+
+.contentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.contentHeader h1 {
+    font-size: 1.8rem;
+    color: #0f172a;
+}
+
+.userPanel {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.notifBtn {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid #e2e8f0;
+}
+
+.dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+@media (max-width: 1024px) {
+    .dashboardLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}

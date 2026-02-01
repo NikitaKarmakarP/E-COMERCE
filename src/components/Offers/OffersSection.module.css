@@ -1,0 +1,173 @@
+.offersSection {
+    padding: 2rem 0 4rem;
+}
+
+.sectionGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.comboCard {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.badge {
+    background: #dcfce7;
+    color: #166534;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.comboList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dealItem {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.dealItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.dealIcon {
+    width: 60px;
+    height: 60px;
+    background: #eff6ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+.dealMeta {
+    flex: 1;
+}
+
+.dealMeta h4 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.dealMeta p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.priceRow {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.dealPrice {
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.dealOldPrice {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.addCombo {
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.festivalBanner {
+    border-radius: 24px;
+    background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1000');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.festivalOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.festTag {
+    color: var(--accent);
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.festivalOverlay h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.festivalOverlay p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 400px;
+}
+
+.festActions {
+    display: flex;
+    gap: 15px;
+}
+
+.festBtn {
+    background: white;
+    color: black;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.festBtnOutline {
+    border: 1px solid white;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .sectionGrid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,66 +1,158 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
+import ProductCard from '@/components/Product/ProductCard';
+import StickyCart from '@/components/Product/StickyCart';
+import SmartHub from '@/components/SmartHub/SmartHub';
+import OffersSection from '@/components/Offers/OffersSection';
+import styles from './page.module.css';
+import Link from 'next/link';
+import { categories } from '@/data/categories';
+import { products } from '@/data/products';
 
 export default function Home() {
+  const featuredProducts = products.filter(p => p.featured);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Header />
+
+      <main className={styles.main} id="main-content">
+        {/* Hero Section */}
+        <section className={styles.hero}>
+          <div className="container">
+            <div className={styles.heroContent}>
+              <div className={styles.heroText}>
+                <div className={styles.trustBadge}>Trusted by 10M+ Indians</div>
+                <h1 className="animate-fade-in">
+                  Everything you need, <br />
+                  <span>Delivered Fast.</span>
+                </h1>
+                <p>From the freshest groceries to the latest trends. Experience the mega-mart transformation.</p>
+                <div className={styles.heroActions}>
+                  <Link href="/categories" className={styles.primaryBtn} aria-label="Shop our collections now">Shop Now</Link>
+                  <Link href="/deals" className={styles.secondaryBtn} aria-label="Explore today's deals">Explore Deals</Link>
+                </div>
+              </div>
+              <div className={styles.heroImage}>
+                <div className={styles.imageCard}>
+                  <div className={styles.floatingPrice}>₹99 onwards</div>
+                  <div className={styles.discountTag}>60% OFF</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <SmartHub />
+
+        {/* Category Quick Links */}
+        <section className={styles.categoriesSection}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <div>
+                <h2>Shop by Department</h2>
+                <p>Quality curated just for you.</p>
+              </div>
+              <Link href="/categories" className={styles.viewAll} aria-label="View all departments">View All &rarr;</Link>
+            </div>
+            <div className={styles.categoryGrid}>
+              {categories.map((cat) => (
+                <Link href={`/category/${cat.slug}`} key={cat.id} className={styles.categoryCard}>
+                  <div className={styles.iconBox} style={{ backgroundColor: cat.color }} aria-hidden="true">
+                    {cat.icon}
+                  </div>
+                  <span>{cat.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Flash Sale Banner */}
+        <div className="container">
+          <div className={styles.flashBanner}>
+            <div className={styles.flashInfo}>
+              <span className={styles.flashTag}>Flash Sale</span>
+              <h3>Ends In <span className={styles.timer}>02H : 45M : 12S</span></h3>
+            </div>
+            <p>Up to 80% Off on Top Brands. Don&apos;t miss out!</p>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        <OffersSection />
+
+        {/* Featured Products */}
+        <section className={`${styles.productsSection} section-padding`}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <div>
+                <h2>Trending Today</h2>
+                <p>See what everyone is buying right now.</p>
+              </div>
+              <Link href="/trending" className={styles.viewMore}>See All Trending</Link>
+            </div>
+            <div className={styles.productGrid}>
+              {featuredProducts.map((product) => (
+                <ProductCard key={product.id} {...product} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom Banners */}
+        <section className={styles.bannerSection}>
+          <div className="container">
+            <div className={styles.dualBanners}>
+              <div className={`${styles.promoBanner} ${styles.fashionBanner}`}>
+                <div className={styles.bannerOverlay}>
+                  <span>FASHION</span>
+                  <h3>Style Upgrade</h3>
+                  <Link href="/category/fashion" aria-label="Upgrade your style with our Fashion collection">Upgrade Now</Link>
+                </div>
+              </div>
+              <div className={`${styles.promoBanner} ${styles.groceryBanner}`}>
+                <div className={styles.bannerOverlay}>
+                  <span>FRESH</span>
+                  <h3>Pantry Essentials</h3>
+                  <Link href="/category/grocery" aria-label="Save big on Pantry Essentials">Save Big</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className={styles.featuresSection}>
+          <div className="container">
+            <div className={styles.featuresGrid}>
+              <div className={styles.featureItem}>
+                <div className={styles.featureIcon} aria-hidden="true">⚡</div>
+                <h4>Instant Delivery</h4>
+                <p>Items delivered in under 2 hours</p>
+              </div>
+              <div className={styles.featureItem}>
+                <div className={styles.featureIcon} aria-hidden="true">🛡️</div>
+                <h4>Secure Payments</h4>
+                <p>100% safe checkout & UPI options</p>
+              </div>
+              <div className={styles.featureItem}>
+                <div className={styles.featureIcon} aria-hidden="true">⭐</div>
+                <h4>Top Quality</h4>
+                <p>Curated brands you know and love</p>
+              </div>
+              <div className={styles.featureItem}>
+                <div className={styles.featureIcon} aria-hidden="true">🔄</div>
+                <h4>Easy Returns</h4>
+                <p>No hassle 10-day return policy</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
-    </div>
+
+      <StickyCart />
+      <Footer />
+    </>
   );
 }

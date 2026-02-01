@@ -1,0 +1,150 @@
+.footer {
+    background-color: var(--primary-dark);
+    color: white;
+    margin-top: 4rem;
+}
+
+.newsletter {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.newsletterContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.newsletterContent h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.newsletterContent p {
+    opacity: 0.9;
+}
+
+.newsletterForm {
+    display: flex;
+    gap: 10px;
+    flex: 0 1 500px;
+}
+
+.newsletterForm input {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    border: none;
+    font-size: 1rem;
+}
+
+.newsletterForm button {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 0 25px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.newsletterForm button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 3rem;
+    padding: 4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brandCol .logo {
+    margin-bottom: 1.5rem;
+}
+
+.brandCol h1 {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.brandCol span {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+}
+
+.brandCol p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.linkCol h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.linkCol ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.linkCol a {
+    color: #cbd5e1;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.linkCol a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.bottomBar {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.paymentMethods {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .footerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .newsletterContent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .newsletterForm {
+        width: 100%;
+    }
+
+    .footerGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .bottomBar {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}

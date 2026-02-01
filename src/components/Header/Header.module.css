@@ -1,0 +1,246 @@
+.header {
+    width: 100%;
+    z-index: 1000;
+    position: relative;
+}
+
+.topBar {
+    background: var(--primary-dark);
+    color: white;
+    padding: 8px 0;
+    font-size: 0.8rem;
+}
+
+.topBarContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.topLinks a:hover {
+    text-decoration: underline;
+}
+
+.familyIndicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 10px;
+    border-radius: 50px;
+    font-weight: 700;
+}
+
+.memberAvatar {
+    font-size: 1.1rem;
+}
+
+.mainHeader {
+    background: white;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menuToggle {
+    background: none;
+    border: none;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logoShort {
+    background: var(--primary);
+    color: white;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 12px;
+}
+
+.logoText h1 {
+    font-size: 1.4rem;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.logoText span {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: 3px;
+}
+
+.navIcons {
+    display: flex;
+    gap: 2rem;
+}
+
+.iconItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+    position: relative;
+    cursor: pointer;
+}
+
+.accountDropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdownContent {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 180px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+    border: 1px solid var(--border-light);
+}
+
+.iconItem:hover .dropdownContent {
+    display: flex;
+}
+
+.dropdownContent a {
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: var(--text-main);
+    transition: all 0.2s;
+}
+
+.dropdownContent a:hover {
+    background: #f1f5f9;
+    color: var(--primary);
+}
+
+.avatarCircle {
+    width: 32px;
+    height: 32px;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    background: var(--secondary);
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+.bottomNav {
+    background: white;
+    border-bottom: 1px solid var(--border-light);
+    padding: 10px 0;
+}
+
+.navList {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.navList li a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.navList li a:hover {
+    color: var(--primary);
+}
+
+.allCats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0;
+}
+
+.dealLink {
+    color: var(--secondary) !important;
+}
+
+/* Theme Overrides */
+.kidsTheme .mainHeader {
+    background: #fff1f2;
+}
+
+.kidsTheme .logoText h1 {
+    color: #e11d48;
+}
+
+.elderTheme .headerContent {
+    padding: 1.5rem 0;
+}
+
+.elderTheme .navIcons span {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+@media (max-width: 1024px) {
+    .navIcons {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .bottomNav {
+        display: none;
+    }
+}

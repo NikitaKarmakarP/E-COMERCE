@@ -1,0 +1,68 @@
+.alertCard {
+    background: #fff1f2;
+    border: 1px solid #fecaca;
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.alertIcon {
+    font-size: 1.5rem;
+}
+
+.alertBody h5 {
+    color: #991b1b;
+    margin-bottom: 2px;
+}
+
+.alertBody p {
+    font-size: 0.8rem;
+    color: #ef4444;
+}
+
+.actionBtn {
+    margin-left: auto;
+    background: #991b1b;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.userGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.userCard {
+    background: #f8fafc;
+    padding: 1.25rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.userAvatar {
+    width: 50px;
+    height: 50px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.sellerBadge {
+    background: var(--primary);
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-weight: 700;
+}

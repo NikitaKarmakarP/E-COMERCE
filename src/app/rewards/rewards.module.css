@@ -1,0 +1,176 @@
+.rewardsPage {
+    padding: 4rem 0;
+    background: #fdf2f8;
+    /* Soft pinkish theme for rewards */
+    min-height: 100vh;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 2.5rem;
+    color: #831843;
+    text-align: center;
+}
+
+.rewardsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.mainCard {
+    background: white;
+    border-radius: 30px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(131, 24, 67, 0.1);
+    border: 1px solid #fbcfe8;
+}
+
+.pointsHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pointsHeader h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #be185d;
+    letter-spacing: 2px;
+}
+
+.pointsValue {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #831843;
+    line-height: 1;
+    margin: 10px 0;
+}
+
+.tierBadge {
+    display: inline-block;
+    background: linear-gradient(45deg, #fbbf24, #f59e0b);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+}
+
+.statsRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.statBox {
+    background: #fff1f2;
+    padding: 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.statBox h4 {
+    font-size: 0.8rem;
+    color: #9d174d;
+    margin-bottom: 5px;
+}
+
+.statBox p {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #831843;
+}
+
+/* Scratch Cards Section */
+.scratchSection h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.scratchGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.cardContainer {
+    aspect-ratio: 1/1;
+    background: #ddd;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.cardLocked {
+    background: #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+}
+
+.cardUnscratched {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.cardUnscratched span {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.referralCard {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+    color: white;
+    padding: 2.5rem;
+}
+
+.referralCard h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.referralCard p {
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.refCodeBox {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.codeText {
+    font-family: monospace;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.copyBtn {
+    background: white;
+    color: #1e1b4b;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .rewardsGrid {
+        grid-template-columns: 1fr;
+    }
+}
