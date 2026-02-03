@@ -48,7 +48,7 @@ export default function GiftCardsPage() {
                                 <div style={{ padding: '1.5rem 0.5rem 0.5rem' }}>
                                     <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '8px' }}>{card.name}</h4>
                                     <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '1.5rem' }}>Digital Voucher delivered via Email/SMS</p>
-                                    <button className="primary-btn" style={{ width: '100%', padding: '12px' }}>Buy Now</button>
+                                    <button className="primary-btn" style={{ width: '100%', padding: '12px' }} onClick={() => alert('Opening secure gift card configuration panel...')}>Buy Now</button>
                                 </div>
                             </div>
                         ))}

@@ -6,15 +6,44 @@ import Footer from '@/components/Footer/Footer';
 import styles from './rewards.module.css';
 
 export default function RewardsPage() {
-    const [points] = useState(2450);
-    const [cashback] = useState(450);
+    const [points, setPoints] = useState(2450);
+    const [cashback, setCashback] = useState(450);
+    const [scratchedCards, setScratchedCards] = useState<string[]>([]);
 
     const scratchCards = [
-        { id: '1', status: 'unscratched', icon: '🎁', title: 'Gift card' },
-        { id: '2', status: 'unscratched', icon: '💰', title: 'Cashback' },
+        { id: '1', status: 'unscratched', icon: '🎁', title: 'Gift card', reward: 'Won ₹50 Gift Card!' },
+        { id: '2', status: 'unscratched', icon: '💰', title: 'Cashback', reward: 'Won ₹25 Cashback!' },
         { id: '3', status: 'locked', icon: '🔒', title: 'Order above ₹999' },
         { id: '4', status: 'locked', icon: '🔒', title: 'Order above ₹1499' },
     ];
+
+    const handleConvertPoints = () => {
+        if (points < 100) {
+            alert('Minimum 100 points required to convert.');
+            return;
+        }
+        const conversionValue = Math.floor(points / 10);
+        setCashback(prev => prev + conversionValue);
+        setPoints(points % 10);
+        alert(`Successfully converted ${points - (points % 10)} points to ₹${conversionValue} wallet balance!`);
+    };
+
+    const handleScratch = (id: string) => {
+        const card = scratchCards.find(c => c.id === id);
+        if (card?.status === 'locked') {
+            alert('This card is locked. Place more orders to unlock!');
+            return;
+        }
+        if (scratchedCards.includes(id)) return;
+
+        setScratchedCards([...scratchedCards, id]);
+        alert(card?.reward || 'Better luck next time!');
+    };
+
+    const copyReferral = () => {
+        navigator.clipboard.writeText('BB250MEGA');
+        alert('Referral code copied to clipboard!');
+    };
 
     return (
         <>
@@ -39,12 +68,12 @@ export default function RewardsPage() {
                                 </div>
                                 <div className={styles.statBox}>
                                     <h4>Points Value</h4>
-                                    <p>₹{points / 10}</p>
+                                    <p>₹{(points / 10).toFixed(0)}</p>
                                 </div>
                             </div>
 
                             <div style={{ marginTop: '2.5rem' }}>
-                                <button className="primary-btn" style={{ width: '100%', padding: '1.2rem' }}>
+                                <button className="primary-btn" style={{ width: '100%', padding: '1.2rem' }} onClick={handleConvertPoints}>
                                     Convert Points to Wallet
                                 </button>
                             </div>
@@ -55,12 +84,21 @@ export default function RewardsPage() {
                             <div className={styles.scratchSection}>
                                 <h3>Scratch Cards</h3>
                                 <div className={styles.scratchGrid}>
-                                    {scratchCards.map(card => (
-                                        <div key={card.id} className={`${styles.cardContainer} ${card.status === 'locked' ? styles.cardLocked : styles.cardUnscratched}`}>
-                                            <span>{card.icon}</span>
-                                            <p style={{ fontSize: '0.75rem', textAlign: 'center', padding: '0 10px' }}>{card.title}</p>
-                                        </div>
-                                    ))}
+                                    {scratchCards.map(card => {
+                                        const isScratched = scratchedCards.includes(card.id);
+                                        return (
+                                            <div
+                                                key={card.id}
+                                                className={`${styles.cardContainer} ${card.status === 'locked' ? styles.cardLocked : isScratched ? styles.cardScratched : styles.cardUnscratched}`}
+                                                onClick={() => handleScratch(card.id)}
+                                            >
+                                                <span>{isScratched ? '🎉' : card.icon}</span>
+                                                <p style={{ fontSize: '0.75rem', textAlign: 'center', padding: '0 10px' }}>
+                                                    {isScratched ? card.reward : card.title}
+                                                </p>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>
@@ -72,7 +110,7 @@ export default function RewardsPage() {
 
                             <div className={styles.refCodeBox}>
                                 <span className={styles.codeText}>BB250MEGA</span>
-                                <button className={styles.copyBtn}>Copy Code</button>
+                                <button className={styles.copyBtn} onClick={copyReferral}>Copy Code</button>
                             </div>
                         </div>
 

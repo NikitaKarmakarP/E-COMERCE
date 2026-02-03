@@ -2,12 +2,28 @@
 
 import styles from './OffersSection.module.css';
 import Link from 'next/link';
+import { useApp } from '@/context/AppContext';
 
 export default function OffersSection() {
+    const { addToCart } = useApp();
     const comboDeals = [
         { id: 'c1', title: 'Breakfast Combo', items: 'Oats + Honey + Almond Milk', price: 999, originalPrice: 1499, savings: 500, icon: '🥣' },
         { id: 'c2', title: 'Gym Essentials', items: 'Protein + Shaker + Peanut Butter', price: 2499, originalPrice: 3499, savings: 1000, icon: '💪' },
     ];
+
+    const handleAddCombo = (deal: any) => {
+        addToCart({
+            id: deal.id,
+            name: deal.title,
+            price: deal.price,
+            originalPrice: deal.originalPrice,
+            category: 'grocery',
+            image: '',
+            rating: 5,
+            isGrocery: true,
+            brand: 'BharatBazaar Value'
+        });
+    };
 
     return (
         <section className={styles.offersSection}>
@@ -32,7 +48,7 @@ export default function OffersSection() {
                                             <span className={styles.dealOldPrice}>₹{deal.originalPrice}</span>
                                         </div>
                                     </div>
-                                    <button className={styles.addCombo}>Add Combo</button>
+                                    <button className={styles.addCombo} onClick={() => handleAddCombo(deal)}>Add Combo</button>
                                 </div>
                             ))}
                         </div>

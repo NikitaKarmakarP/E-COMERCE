@@ -1,40 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette */
-  --primary: #1a237e;
-  --primary-light: #534bae;
-  --primary-dark: #000051;
-  --secondary: #ff9800;
-  --accent: #ffd700;
-  --success: #2e7d32;
-  --error: #d32f2f;
-  --warning: #ffa000;
-  --info: #0288d1;
+  /* Premium Color Palette */
+  --primary: #1e1b4b; /* Deep Indigo */
+  --primary-light: #4338ca;
+  --primary-dark: #312e81;
+  --secondary: #fbbf24; /* Warm Gold */
+  --accent: #f59e0b;
+  --success: #059669;
+  --error: #dc2626;
+  --warning: #f59e0b;
+  --info: #2563eb;
 
   /* Neutrals */
-  --bg-main: #f8fafc;
+  --bg-main: #fafaf9;
   --bg-card: #ffffff;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --border-light: #e2e8f0;
+  --text-main: #1c1917;
+  --text-muted: #57534e;
+  --border-light: #e7e5e4;
 
   /* Effects */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.3);
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
   /* Radii */
-  --radius-sm: 8px;
+  --radius-sm: 6px;
   --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-lg: 24px;
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme='dark'] {
@@ -99,10 +99,11 @@ ul {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 800;
 }
 
 /* Animations */

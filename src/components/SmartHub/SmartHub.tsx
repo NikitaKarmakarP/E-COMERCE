@@ -44,7 +44,7 @@ export default function SmartHub() {
                     <div className={styles.card}>
                         <div className={styles.cardHeader}>
                             <h3>Family Group</h3>
-                            <button className={styles.settingsBtn}>⚙️</button>
+                            <button className={styles.settingsBtn} onClick={() => window.location.href = '/family'}>⚙️</button>
                         </div>
                         <div className={styles.familyList}>
                             {familyMembers.map(member => (
@@ -58,7 +58,7 @@ export default function SmartHub() {
                                     <span className={styles.roleTag}>{member.role}</span>
                                 </div>
                             ))}
-                            <button className={styles.addMember}>+</button>
+                            <button className={styles.addMember} onClick={() => alert('Invite a family member by entering their phone number or email...')}>+</button>
                         </div>
                         <div className={styles.sharedCartInfo}>
                             <p>🛒 <strong>Shared Cart:</strong> Rahul added 2 items</p>

@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import ProductCard from '@/components/Product/ProductCard';
@@ -11,6 +14,19 @@ import { products } from '@/data/products';
 
 export default function Home() {
   const featuredProducts = products.filter(p => p.featured);
+  const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 45, seconds: 12 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        return prev;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -70,13 +86,15 @@ export default function Home() {
 
         {/* Flash Sale Banner */}
         <div className="container">
-          <div className={styles.flashBanner}>
+          <Link href="/deals" className={styles.flashBanner}>
             <div className={styles.flashInfo}>
               <span className={styles.flashTag}>Flash Sale</span>
-              <h3>Ends In <span className={styles.timer}>02H : 45M : 12S</span></h3>
+              <h3>Ends In <span className={styles.timer}>
+                {String(timeLeft.hours).padStart(2, '0')}H : {String(timeLeft.minutes).padStart(2, '0')}M : {String(timeLeft.seconds).padStart(2, '0')}S
+              </span></h3>
             </div>
             <p>Up to 80% Off on Top Brands. Don&apos;t miss out!</p>
-          </div>
+          </Link>
         </div>
 
         <OffersSection />
@@ -103,14 +121,14 @@ export default function Home() {
         <section className={styles.bannerSection}>
           <div className="container">
             <div className={styles.dualBanners}>
-              <div className={`${styles.promoBanner} ${styles.fashionBanner}`}>
+              <div className={`${styles.promoBanner} ${styles.fashionBanner}`} onClick={() => window.location.href = '/category/fashion'}>
                 <div className={styles.bannerOverlay}>
                   <span>FASHION</span>
                   <h3>Style Upgrade</h3>
                   <Link href="/category/fashion" aria-label="Upgrade your style with our Fashion collection">Upgrade Now</Link>
                 </div>
               </div>
-              <div className={`${styles.promoBanner} ${styles.groceryBanner}`}>
+              <div className={`${styles.promoBanner} ${styles.groceryBanner}`} onClick={() => window.location.href = '/category/grocery'}>
                 <div className={styles.bannerOverlay}>
                   <span>FRESH</span>
                   <h3>Pantry Essentials</h3>

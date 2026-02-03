@@ -5,201 +5,237 @@
 }
 
 .hero {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
-    padding: 5rem 0 8rem;
+    padding: 8rem 0 12rem;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
 .heroContent {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #ffffff, #94a3b8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
 }
 
 .subtitle {
-    font-size: 1.25rem;
-    color: #cbd5e1;
-    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    margin-bottom: 4rem;
 }
 
 .searchBox {
     background: white;
-    padding: 0.5rem;
-    border-radius: 50px;
+    padding: 10px;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 }
 
 .searchInput {
     flex: 1;
     border: none;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
+    padding: 15px 30px;
+    font-size: 1.2rem;
     outline: none;
-    border-radius: 50px;
+    border-radius: var(--radius-full);
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .searchBtn {
-    background: var(--primary);
-    color: white;
+    background: var(--secondary);
+    color: var(--primary);
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: var(--transition);
 }
 
 .searchBtn:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
+    background: white;
+    transform: scale(1.1);
 }
 
 .cardGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: -4rem;
+    gap: 2.5rem;
+    margin-top: -6rem;
     position: relative;
     z-index: 3;
 }
 
 .card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
+    padding: 3.5rem 2.5rem;
+    border-radius: var(--radius-lg);
     text-align: center;
     box-shadow: var(--shadow-lg);
-    transition: all 0.3s;
+    transition: var(--transition);
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 1px solid var(--border-light);
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-15px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
     border-color: var(--primary-light);
 }
 
 .icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 4rem;
+    margin-bottom: 2rem;
     display: inline-block;
-    padding: 1rem;
-    background: #f1f5f9;
-    border-radius: 50%;
-    transition: all 0.3s;
-}
-
-.card:hover .icon {
-    background: var(--bg-hover);
-    transform: scale(1.1);
 }
 
 .cardTitle {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--text-main);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    color: var(--primary);
 }
 
 .cardDesc {
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .faqSection {
-    margin-top: 5rem;
+    margin-top: 8rem;
 }
 
 .sectionTitle {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+    color: var(--primary);
+    letter-spacing: -1px;
 }
 
 .faqGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .faqItem {
     background: white;
-    padding: 2rem;
-    border-radius: 16px;
+    padding: 3rem;
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.faqItem:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
 }
 
 .faqQuestion {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text-main);
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    color: var(--primary);
 }
 
 .faqAnswer {
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .contactBanner {
-    background: var(--bg-card);
-    border-radius: 24px;
-    padding: 4rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 6rem;
     text-align: center;
-    margin-top: 6rem;
-    background-image: linear-gradient(to right, #eff6ff, #f0fdf4);
+    margin-top: 8rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-light);
+}
+
+.contactBanner h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.contactBanner p {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    margin-bottom: 5rem;
 }
 
 .contactGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 4rem;
 }
 
 .contactItem h4 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    color: var(--primary);
 }
 
 .contactItem p {
     color: var(--text-muted);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
 }
 
 .contactLink {
-    color: var(--primary);
-    font-weight: 700;
+    color: var(--primary-light);
+    font-weight: 800;
     text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    background: var(--bg-main);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.contactLink:hover {
+    background: var(--primary);
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .contactGrid {
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
     .cardGrid {
         grid-template-columns: 1fr;
+        margin-top: -3rem;
     }
 
     .faqGrid {
@@ -208,14 +244,18 @@
 
     .contactGrid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
     }
 
     .hero {
-        padding: 4rem 1rem 6rem;
+        padding: 6rem 1rem 8rem;
     }
 
     .title {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+
+    .contactBanner {
+        padding: 3rem 1.5rem;
     }
 }

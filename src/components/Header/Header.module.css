@@ -1,14 +1,16 @@
 .header {
     width: 100%;
     z-index: 1000;
-    position: relative;
+    position: sticky;
+    top: 0;
 }
 
 .topBar {
     background: var(--primary-dark);
     color: white;
-    padding: 8px 0;
-    font-size: 0.8rem;
+    padding: 10px 0;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 .topBarContent {
@@ -19,101 +21,119 @@
 
 .topLinks {
     display: flex;
-    gap: 20px;
+    gap: 25px;
+}
+
+.topLinks a {
+    opacity: 0.8;
+    transition: var(--transition);
 }
 
 .topLinks a:hover {
-    text-decoration: underline;
+    opacity: 1;
 }
 
 .familyIndicator {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2px 10px;
-    border-radius: 50px;
-    font-weight: 700;
-}
-
-.memberAvatar {
-    font-size: 1.1rem;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
 }
 
 .mainHeader {
     background: white;
-    padding: 1rem 0;
+    padding: 1.25rem 0;
     border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
 }
 
 .headerContent {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .leftSection {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .menuToggle {
-    background: none;
+    background: var(--bg-main);
     border: none;
     color: var(--primary);
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.menuToggle:hover {
+    background: var(--border-light);
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
 .logoShort {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: white;
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 1.2rem;
-    border-radius: 12px;
+    font-size: 1.4rem;
+    border-radius: 14px;
+    box-shadow: var(--shadow-md);
 }
 
 .logoText h1 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 1;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    color: var(--primary);
 }
 
 .logoText span {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 800;
-    color: var(--secondary);
-    letter-spacing: 3px;
+    color: var(--accent);
+    letter-spacing: 4px;
 }
 
 .navIcons {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .iconItem {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-main);
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
     position: relative;
     cursor: pointer;
+    transition: var(--transition);
+}
+
+.iconItem:hover {
+    color: var(--primary-light);
+    transform: translateY(-2px);
 }
 
 .accountDropdown {
@@ -125,17 +145,30 @@
 
 .dropdownContent {
     position: absolute;
-    top: 100%;
+    top: 130%;
     right: 0;
     background: white;
-    min-width: 180px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 10px;
+    min-width: 200px;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    padding: 12px;
     display: none;
     flex-direction: column;
     z-index: 100;
     border: 1px solid var(--border-light);
+    animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .iconItem:hover .dropdownContent {
@@ -143,97 +176,101 @@
 }
 
 .dropdownContent a {
-    padding: 10px 15px;
-    border-radius: 8px;
+    padding: 12px 18px;
+    border-radius: var(--radius-sm);
     color: var(--text-main);
-    transition: all 0.2s;
+    transition: var(--transition);
 }
 
 .dropdownContent a:hover {
-    background: #f1f5f9;
+    background: var(--bg-main);
     color: var(--primary);
 }
 
 .avatarCircle {
-    width: 32px;
-    height: 32px;
-    background: #f1f5f9;
+    width: 36px;
+    height: 36px;
+    background: var(--bg-main);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    color: var(--primary);
-    margin-bottom: 4px;
+    font-size: 1.4rem;
+    border: 1px solid var(--border-light);
 }
 
 .badge {
     position: absolute;
-    top: -5px;
-    right: 5px;
+    top: -8px;
+    right: -2px;
     background: var(--secondary);
-    color: white;
-    font-size: 0.65rem;
-    padding: 2px 5px;
-    border-radius: 10px;
+    color: var(--primary);
+    font-size: 0.7rem;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     font-weight: 800;
+    border: 2px solid white;
 }
 
 .bottomNav {
     background: white;
     border-bottom: 1px solid var(--border-light);
-    padding: 10px 0;
+    padding: 12px 0;
 }
 
 .navList {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
 }
 
 .navList li a {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary);
     transition: var(--transition);
 }
 
 .navList li a:hover {
-    color: var(--primary);
+    color: var(--primary-light);
 }
 
 .allCats {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 0.9rem;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 0.95rem;
     padding: 0;
+    color: var(--primary);
 }
 
 .dealLink {
-    color: var(--secondary) !important;
+    color: var(--accent) !important;
 }
 
 /* Theme Overrides */
 .kidsTheme .mainHeader {
-    background: #fff1f2;
-}
-
-.kidsTheme .logoText h1 {
-    color: #e11d48;
+    background: #fff7ed;
 }
 
 .elderTheme .headerContent {
-    padding: 1.5rem 0;
+    gap: 4rem;
 }
 
 .elderTheme .navIcons span {
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1.2rem;
 }
 
 @media (max-width: 1024px) {
+    .headerContent {
+        gap: 1.5rem;
+    }
+
     .navIcons {
         gap: 1.5rem;
     }
@@ -241,6 +278,10 @@
 
 @media (max-width: 768px) {
     .bottomNav {
+        display: none;
+    }
+
+    .logoText {
         display: none;
     }
 }

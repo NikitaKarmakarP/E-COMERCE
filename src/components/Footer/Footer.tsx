@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './Footer.module.css';
 import Link from 'next/link';
 
@@ -13,7 +15,7 @@ export default function Footer() {
                             <h3>Subscribe to BharatBazaar Insider</h3>
                             <p>Get the latest deals, coupons, and product launches right in your inbox.</p>
                         </div>
-                        <form className={styles.newsletterForm}>
+                        <form className={styles.newsletterForm} onSubmit={(e) => { e.preventDefault(); alert('Subscribed successfully! Welcome to BharatBazaar.'); }}>
                             <input type="email" placeholder="Enter your email" aria-label="Email Address" required />
                             <button type="submit">Subscribe Now</button>
                         </form>

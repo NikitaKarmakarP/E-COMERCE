@@ -18,12 +18,12 @@ export default function CartPage() {
     const groups: CartCategoryGroup[] = [
         {
             category: 'Grocery & Daily Needs',
-            items: cartItems.filter(item => item.category === 'grocery' || item.category === 'pet-supplies'),
+            items: cartItems.filter(item => ['grocery', 'pets'].includes(item.category)),
             deliverySlot: 'Tomorrow, 6 AM - 9 AM'
         },
         {
             category: 'Fashion & Electronics',
-            items: cartItems.filter(item => item.category === 'fashion' || item.category === 'electronics'),
+            items: cartItems.filter(item => ['fashion', 'electronics', 'beauty', 'toys', 'home', 'tools'].includes(item.category)),
             deliverySlot: 'Standard Delivery (2-3 Days)'
         }
     ].filter(g => g.items.length > 0);
@@ -199,7 +199,7 @@ export default function CartPage() {
                                         <p style={{ fontSize: '0.85rem', fontWeight: 600 }}>Apply Coupon</p>
                                         <div className={styles.couponInput}>
                                             <input type="text" placeholder="Enter code" />
-                                            <button className={styles.actionLink}>Apply</button>
+                                            <button className={styles.actionLink} onClick={() => alert('Coupon applied successfully!')}>Apply</button>
                                         </div>
                                     </div>
 

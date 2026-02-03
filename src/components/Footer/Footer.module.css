@@ -1,129 +1,149 @@
 .footer {
-    background-color: var(--primary-dark);
+    background-color: var(--primary);
     color: white;
-    margin-top: 4rem;
+    margin-top: 6rem;
 }
 
 .newsletter {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    padding: 3rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: radial-gradient(circle at top right, var(--primary-light), var(--primary));
+    padding: 5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .newsletterContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .newsletterContent h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
 }
 
 .newsletterContent p {
-    opacity: 0.9;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .newsletterForm {
     display: flex;
-    gap: 10px;
-    flex: 0 1 500px;
+    gap: 15px;
+    flex: 0 1 600px;
 }
 
 .newsletterForm input {
     flex: 1;
-    padding: 15px 20px;
+    padding: 20px 25px;
     border-radius: var(--radius-md);
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
     font-size: 1rem;
+    transition: var(--transition);
+}
+
+.newsletterForm input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    border-color: var(--secondary);
 }
 
 .newsletterForm button {
-    background: var(--accent);
-    color: var(--primary-dark);
-    padding: 0 25px;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 0 40px;
     border-radius: var(--radius-md);
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 1rem;
     transition: var(--transition);
 }
 
 .newsletterForm button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
 .footerGrid {
     display: grid;
-    grid-template-columns: 1.5fr repeat(3, 1fr);
-    gap: 3rem;
-    padding: 4rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 5rem;
+    padding: 6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .brandCol .logo {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .brandCol h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
     line-height: 1;
 }
 
 .brandCol span {
     font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: var(--accent);
+    letter-spacing: 4px;
+    color: var(--secondary);
+    font-weight: 800;
 }
 
 .brandCol p {
-    color: #cbd5e1;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+    max-width: 400px;
 }
 
 .linkCol h4 {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: white;
+    font-weight: 700;
 }
 
 .linkCol ul {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
 .linkCol a {
-    color: #cbd5e1;
+    color: rgba(255, 255, 255, 0.6);
     transition: var(--transition);
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 .linkCol a:hover {
-    color: var(--accent);
-    padding-left: 5px;
+    color: var(--secondary);
+    transform: translateX(8px);
 }
 
 .bottomBar {
-    padding: 2rem 0;
+    padding: 3rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9rem;
-    color: #94a3b8;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .paymentMethods {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
+    font-weight: 600;
 }
 
 @media (max-width: 1024px) {
     .footerGrid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
     }
 }
 
@@ -131,20 +151,24 @@
     .newsletterContent {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
     }
 
     .newsletterForm {
         width: 100%;
+        flex-direction: column;
     }
 
     .footerGrid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+        padding: 4rem 0;
     }
 
     .bottomBar {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
         text-align: center;
+        padding: 3rem 0;
     }
 }

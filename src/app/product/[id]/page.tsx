@@ -104,7 +104,7 @@ export default function ProductDetails({ params }: PageProps) {
                                 <button className={styles.addToCartBtn} onClick={handleAddToCart}>
                                     Add to Cart
                                 </button>
-                                <button className={styles.buyNowBtn}>
+                                <button className={styles.buyNowBtn} onClick={() => alert('Proceeding to instant checkout...')}>
                                     Buy Now
                                 </button>
                             </div>
@@ -113,7 +113,7 @@ export default function ProductDetails({ params }: PageProps) {
                                 <h4>Check Delivery</h4>
                                 <div className={styles.pincodeInput}>
                                     <input type="text" placeholder="Enter Pincode" defaultValue="400001" />
-                                    <button>Check</button>
+                                    <button onClick={() => alert('Delivery is available at this pincode!')}>Check</button>
                                 </div>
                                 <p className={styles.deliveryStatus}>🚚 Delivery by <strong>Tomorrow, 8 AM</strong></p>
                             </div>
